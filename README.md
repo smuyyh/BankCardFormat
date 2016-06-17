@@ -26,5 +26,5 @@
   });
 ```
 
-![image](https://github.com/smuyyh/BankCardFormat/blob/master/screenshot/device.png?raw=true)
+![image](https://github.com/smuyyh/BankCardFormat/blob/master/screenshot/device.png?raw=true =100)
 
