@@ -6,10 +6,6 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-/**
- * @author yuyh.
- * @date 2016/6/17.
- */
 public class BandCardEditText extends EditText {
 
     private boolean shouldStopChange = false;
@@ -99,9 +95,6 @@ public class BandCardEditText extends EditText {
 
     /**
      * 校验银行卡卡号
-     *
-     * @param cardId
-     * @return
      */
     public boolean checkBankCard(String cardId) {
         char bit = getBankCardCheckCode(cardId.substring(0, cardId.length() - 1));
@@ -113,9 +106,6 @@ public class BandCardEditText extends EditText {
 
     /**
      * 从不含校验位的银行卡卡号采用 Luhm 校验算法获得校验位
-     *
-     * @param nonCheckCodeCardId
-     * @return
      */
     public char getBankCardCheckCode(String nonCheckCodeCardId) {
         if (nonCheckCodeCardId == null || nonCheckCodeCardId.trim().length() == 0

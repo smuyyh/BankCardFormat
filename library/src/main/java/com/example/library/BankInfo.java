@@ -2,13 +2,8 @@ package com.example.library;
 
 import android.util.Log;
 
-/**
- * @author yuyh.
- * @date 2016/6/17.
- */
 public class BankInfo {
 
-    //BIN号
     private final static long[] bankBin =
             {
                     102033,
