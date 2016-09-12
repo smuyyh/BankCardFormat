@@ -2,6 +2,7 @@ package com.example.library;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.widget.EditText;
@@ -49,7 +50,6 @@ public class BandCardEditText extends EditText {
 
         @Override
         public void afterTextChanged(Editable editable) {
-
             format(editable);
         }
     }
@@ -77,11 +77,13 @@ public class BandCardEditText extends EditText {
         courPos = builder.length();
         setText(builder.toString());
         setSelection(courPos);
-        if(listener != null) {
-            if (isBankCard())
-                listener.success(BankInfo.getNameOfBank(getBankCardText().toCharArray(), 0));
-            else
+        if (listener != null) {
+            if (isBankCard()) {
+                char[] ss = getBankCardText().toCharArray();
+                listener.success(BankInfo.getNameOfBank(ss, 0));
+            } else {
                 listener.failure();
+            }
         }
     }
 
@@ -108,8 +110,10 @@ public class BandCardEditText extends EditText {
      * 从不含校验位的银行卡卡号采用 Luhm 校验算法获得校验位
      */
     public char getBankCardCheckCode(String nonCheckCodeCardId) {
-        if (nonCheckCodeCardId == null || nonCheckCodeCardId.trim().length() == 0
-                || !nonCheckCodeCardId.matches("\\d+")) {
+        if (TextUtils.isEmpty(nonCheckCodeCardId)
+                || !nonCheckCodeCardId.matches("\\d+")
+                || nonCheckCodeCardId.length() < 16
+                || nonCheckCodeCardId.length() > 19) {
             //如果传的不是数据返回N
             return 'N';
         }

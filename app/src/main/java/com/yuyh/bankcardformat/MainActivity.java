@@ -2,6 +2,7 @@ package com.yuyh.bankcardformat;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.library.BandCardEditText;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void failure() {
+                Log.i("TAG", "failure");
                 tv.setText("所属银行：");
             }
         });
