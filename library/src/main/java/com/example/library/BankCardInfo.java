@@ -2,9 +2,9 @@ package com.example.library;
 
 import android.util.Log;
 
-public class BankInfo {
+public class BankCardInfo {
 
-    private final static long[] bankBin =
+    public final static long[] bankBin =
             {
                     102033,
                     103000,
@@ -1069,7 +1069,7 @@ public class BankInfo {
                     998800,
             };
     //"发卡行.卡种名称",
-    private static final String[] bankName = {
+    public static final String[] bankName = {
             "广东发展银行.广发理财通",
             "农业银行.金穗借记卡",
             "昆明农联社.金碧卡",
@@ -2132,39 +2132,4 @@ public class BankInfo {
             "上海浦东发展银行.东方卡",
             "深圳发展银行.发展卡",
     };
-
-
-    public static String getNameOfBank(char[] charBin, int offset) {
-        long longBin = 0;
-
-        for (int i = 0; i < 6; i++) {
-            longBin = (longBin * 10) + (charBin[i + offset] - 48);
-        }
-        Log.i("BankInfo", "bankBin: " + longBin);
-
-        int index = binarySearch(bankBin, longBin);
-
-        if (index == -1) {
-            return "";
-        }
-        return bankName[index];
-
-    }
-
-    //二分查找方法
-    public static int binarySearch(long[] srcArray, long des) {
-        int low = 0;
-        int high = srcArray.length - 1;
-        while (low <= high) {
-            int middle = (low + high) / 2;
-            if (des == srcArray[middle]) {
-                return middle;
-            } else if (des < srcArray[middle]) {
-                high = middle - 1;
-            } else {
-                low = middle + 1;
-            }
-        }
-        return -1;
-    }
 }

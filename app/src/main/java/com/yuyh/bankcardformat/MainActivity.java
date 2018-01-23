@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.library.BandCardEditText;
+import com.example.library.BankCardListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         tv = (TextView) findViewById(R.id.tv);
         editText = (BandCardEditText) findViewById(R.id.et);
-        editText.setBankCardListener(new BandCardEditText.BankCardListener() {
+        editText.setBankCardListener(new BankCardListener() {
             @Override
             public void success(String name) {
                 tv.setText("所属银行：" + name);

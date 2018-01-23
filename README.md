@@ -7,7 +7,7 @@
 ### 使用
 ```
 dependencies {
-    compile 'com.yuyh.bankcardformat:library:1.0.2'
+    compile 'com.yuyh.bankcardformat:library:1.0.3'
 }
 ```
 ```xml
@@ -21,7 +21,7 @@ dependencies {
 ```java
   tv = (TextView) findViewById(R.id.tv);
   editText = (BandCardEditText) findViewById(R.id.et);
-  editText.setBankCardListener(new BandCardEditText.BankCardListener() {
+  editText.setBankCardListener(new BankCardListener() {
       @Override
       public void success(String name) {
           tv.setText("所属银行：" + name);
@@ -32,6 +32,13 @@ dependencies {
           tv.setText("所属银行：");
       }
   });
+
+  // 或者直接检测
+  String carnum = "622700187301032701";
+  if (BankCardUtils.checkBankCard(carnum)) {
+      char[] ss = carnum.toCharArray();
+      String bank = BankCardUtils.getNameOfBank(ss, 0);
+  }
 ```
 
 
